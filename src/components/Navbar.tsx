@@ -16,7 +16,7 @@ const Navbar = () => {
           <Stack direction="row" spacing={2}>
             <Typography variant="h6" component="div">
               <NavLink
-                className="hover:text-black duration-300 font-bold  focus:text-black"
+                className="hover:text-black duration-300 font-bold  link"
                 to="/"
               >
                 Home
@@ -24,7 +24,7 @@ const Navbar = () => {
             </Typography>
             <Typography variant="h6" component="div">
               <NavLink
-                className="hover:text-black duration-300 font-bold focus:text-black"
+                className="hover:text-black duration-300 font-bold link"
                 to="/store"
               >
                 Store
@@ -32,7 +32,7 @@ const Navbar = () => {
             </Typography>
             <Typography variant="h6" component="div">
               <NavLink
-                className="hover:text-black duration-300 font-bold  focus:text-black"
+                className="hover:text-black duration-300 font-bold  link"
                 to="/about"
               >
                 About
