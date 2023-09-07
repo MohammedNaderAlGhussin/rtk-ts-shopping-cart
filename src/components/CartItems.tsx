@@ -6,14 +6,13 @@ import { useState } from "react";
 import CartItem from "./CartItem";
 import { useAppSelector } from "../redux/store";
 import { formatCurrency } from "../utilities/formatCurrency";
+import { totalPriceValue } from "../redux/slices/cartSlice";
 
 const CartItems = () => {
   const cart = useAppSelector((state) => state.cart.cart);
   console.log(cart);
 
-  const totalPrice = cart.reduce((acc, produt) => {
-    return (acc += produt.price * produt.quantity);
-  }, 0);
+  const totalPrice = useAppSelector(totalPriceValue);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);

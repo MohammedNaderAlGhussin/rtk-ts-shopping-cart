@@ -1,7 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 const items: Cart[] =
-  localStorage.getItem("cartItems") !== null
+  localStorage.getItem("cartItems") !== undefined
     ? JSON.parse(localStorage.getItem("cartItems")!)
     : [];
 
@@ -29,6 +30,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    // unUsed Code
     getItemQuantity: (state, action: PayloadAction<{ id: number }>) => {
       state.cart.find((item) => item.id === action.payload.id)?.quantity || 0;
     },
@@ -83,3 +85,14 @@ export const {
   deleteProduct,
   getItemQuantity,
 } = cartSlice.actions;
+
+const products = (state: RootState) => state.cart.cart;
+
+export const totalPriceValue = createSelector(
+  [products],
+  (products): number => {
+    return products.reduce((acc, product): number => {
+      return (acc += product.price * product.quantity);
+    }, 0);
+  }
+);
