@@ -2,7 +2,7 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 const items: Cart[] =
-  localStorage.getItem("cartItems") !== undefined
+  localStorage.getItem("cartItems") !== null
     ? JSON.parse(localStorage.getItem("cartItems")!)
     : [];
 
